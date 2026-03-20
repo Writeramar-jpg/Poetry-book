@@ -1,201 +1,271 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Amar's Poetry Book</title>
+<title>Amar Poetry Book</title>
 
 <style>
 body {
-  margin: 0;
-  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: Georgia, serif;
-  overflow: hidden;
-}
-
-.book {
-  width: 320px;
-  height: 450px;
-  position: relative;
-  perspective: 1500px;
+  background: black;
+  color: white;
+  font-family: Arial;
+  text-align: center;
 }
 
 .page {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  position: absolute;
-  border-radius: 12px;
+  display: none;
   padding: 20px;
-  box-sizing: border-box;
-  transform-origin: left;
-  transition: transform 1s;
-  box-shadow: 0 0 15px rgba(0,0,0,0.6);
-  backface-visibility: hidden;
-  overflow-y: auto;
-}
-
-.page h2 {
-  text-align: center;
-  color: #ff4d6d;
-}
-
-.page p {
-  font-size: 14px;
-  line-height: 1.6;
   white-space: pre-line;
 }
 
+.active {
+  display: block;
+}
+
 button {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  padding: 8px 15px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: orange;
   border: none;
-  background: #ff4d6d;
-  color: white;
-  border-radius: 6px;
+  border-radius: 5px;
 }
-
-.flipped {
-  transform: rotateY(-180deg);
-}
-
-/* Page order */
-.page:nth-child(1){z-index:7;}
-.page:nth-child(2){z-index:6;}
-.page:nth-child(3){z-index:5;}
-.page:nth-child(4){z-index:4;}
-.page:nth-child(5){z-index:3;}
-.page:nth-child(6){z-index:2;}
-.page:nth-child(7){z-index:1;}
 </style>
+
 </head>
 
 <body>
 
-<!-- Music -->
-<audio autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<h1>📖 Amar's Poetry Book</h1>
 
-<!-- Flip Sound -->
-<audio id="flipSound" src="flip.mp3"></audio>
-
-<!-- Visitor Name -->
-<div style="position:absolute;top:10px;text-align:center;width:100%;">
-<input type="text" id="username" placeholder="Enter your name">
-<button onclick="saveName()">Enter</button>
-<h3 id="welcome" style="color:white;"></h3>
-</div>
-
-<div class="book" id="book">
-
-<!-- Page 1 -->
-<div class="page" id="page1">
-<h2>Kuch Der Thahro Zara</h2>
-<p>Kuch der thahro zara... Tumse baat karni hai...</p>
-<button onclick="nextPage(1)">Next</button>
-</div>
-
-<!-- Page 2 -->
-<div class="page" id="page2">
-<h2>Mauka Mila To</h2>
-<p>Mauka mila to main wapas aaunga...</p>
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+<h2>Kuch Der Tahro Zara</h2>
+<p>
+Kuch der tahro jara 
+Tumse thodi baat karni hai 
+Aaj ham bichad jayege 
+Fir kuch saal baad tumse mulakat karni hai 
+Tum yahi sadi pahan kar aana 
+Ke tum yahi sadi pahan kar aana 
+Orr 
+Sath me 
+Kisi apne ko lana 
+Me tanha milunga us vakt 
+Isliye 
+Ki me tanha milunga us vakt 
+To thoda apna pan sath Lana 
+Milege jab amne samne 
+Dilo me ghabrahat 
+Hoto par muskurahat 
+Or ankho me aansu honge 
+Hazaro baate man me hogi 
+Lafz kuch kahne ko bekarar honge 
+Par pass khade us saks ke karan 
+Chahkar bhi kuch kah na sakoge 
+Kuch pal bethkar 
+Thoda ghumne chalege 
+... Kaha 
+Kuch pal bethkar thoda ghumne chalege 
+Un purani kisso me 
+Jaha sare dost ham tum 
+Or ek pyara sa lamha 
+Piche chhut gaya un yaado me 
+Vakt yu hi gujar jayega 
+Tum Jane ko taiyaar hogi 
+Me fir ek baat dohraunga 
+Kuch der tahro jara..
+</p>
 <button onclick="nextPage(2)">Next</button>
 </div>
 
-<!-- Page 3 -->
-<div class="page" id="page3">
-<h2>System</h2>
-<p>Main system nahi... main insaan hu.</p>
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+<h2>Moka Mila To</h2>
+<p>
+Moka mila to 
+मौका मिला तो...
+
+मौका मिला तो में वापस जरूर आऊंगा हकीकत मे ना सही,
+तेरी यादों में जरूर आऊंगा 
+जो अधूरे छूटे अफसाने थे 
+में उनको निभाने जरूर आऊंगा
+
+जो पल बिताए थे साथ में 
+उनको जीने  ‌की चाहत में 
+ नए वक्त के लहजे में  भी 
+पुराने वक्त में जरूर आऊंगा 
+मौका मिला तो।।
+
+कुछ दुख का साथी बनने ,तो 
+ढेर सारी खुशियां लेकर आऊंगा 
+हकीक़त में ना सही ..
+पर कभी  आसू के बहाने 
+तेरी आखो में जरूर आऊंगा 
+
+इस जमाने के डर से 
+अपनी हार पर 
+तुम्हे रोना जरूर आएगा
+हकीकत में ना सही
+पर एक मुस्कुराहट के बहाने
+तेरे कोमल होठों पर जरुर आऊंगा 
+
+में जा चुका होऊंगा दूर कही 
+तुम इंतजार में मेरे रह जाओगे
+फिर भी 
+हकीकत  में ना सही 
+किसी बहाने के बहाने 
+में वापिस जरूर आऊंगा 
+मौका मिला तो ...
+</p>
 <button onclick="nextPage(3)">Next</button>
 </div>
 
-<!-- Page 4 -->
-<div class="page" id="page4">
-<h2>Soch</h2>
-<p>Ye soch mujhe khatam kar degi...</p>
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+<h2>System</h2>
+<p>
+Dheere dheere
+Main khud se door hota gaya,
+Jaise koi system
+Background me crash hota gaya।
+
+Dimag ko reset karna chaha,
+Par darr laga —
+Kahin yaadein delete na ho jayein,
+Isliye har ehsaas ka backup banata gaya।
+
+Phir ek din…
+Pata nahi kaha se
+Ek virus aa gaya,
+Aur mere andar ka pura software
+Chup chaap corrupt ho gaya।
+
+Socha reboot kar lunga sab,
+Par waqt se pehle hi
+System hang hone laga,
+Har soch, har faisla
+Error dikhane laga।
+
+Main khada tha…
+Par control mere haath me nahi tha,
+Jaise main user nahi
+Bas ek broken file ban gaya tha।
+
+Restore karna chaha khud ko,
+Par password yaad hi nahi tha,
+Khud tak pahunchne ka
+Har rasta block ho chuka tha।
+
+Phir ek lamha aaya…
+Jab sab kuch khatam sa laga,
+Tabhi andar kahin se
+Ek chhoti si hope ne signal diya।
+
+Jaise OTP mil gaya ho
+Wapas login hone ka,
+Maine himmat karke
+Phir se khud ko access kiya।
+
+Aur dheere dheere
+Main samajh gaya —
+System kharab tha,
+Par main kabhi khatam nahi hua।
+</p>
 <button onclick="nextPage(4)">Next</button>
 </div>
 
-<!-- Page 5 -->
-<div class="page" id="page5">
-<h2>Saath</h2>
-<p>Sabka saath chahiye... par koi nahi.</p>
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+<h2>Soch</h2>
+<p>
+Ye soch meri khatam kar degi 
+Mujhe meri soch ko 
+Laga du fanda 
+Gale me 
+Bate 
+Kanto se lagte hai 
+Uljhane 
+Khilti rahit 
+Ful sa murjhaya 
+Hua me 
+Bas hu is soch me 
+Ki soch meri ...
+Kya tha 
+Ho gaya kya 
+Tha kesa 
+Mulayam sa 
+Ban gaya kya 
+ ek bejan ,
+Pathar sa 
+Mara firta hu 
+Thokare lagti hai 
+Par 
+Sambhal nahi pa ra 
+Samjh nahi pa raha 
+Jo ho raha 
+Jo hone wala 
+Dikhta hai ankho se 
+Kar lu band 
+Raste 
+Milna mushkil hai 
+Manzil ki rah pe 
+Fulo ke vesh me 
+Kante 
+Biche pade hai 
+Bistar pe 
+Sou to 
+
+Ud jate panchi se 
+Khwab kahi 
+Jagu to tham jata 
+Samay 
+Par chalta rahta
+
+Mera man 
+Rukta vo bhi nahi
+Na samay 
+Na soch 
+Na man 
+Na rukna chahta me
+
+Bahut kuch 
+To nahi 
+Par ha 
+Chal raha 
+Smay 
+Man 
+Bah raha 
+Sagar ki or 
+Badna chahta aage 
+Har kadam 
+Piche or jyada 
+Niklna chahta 
+Yaha se 
+Jana hai 
+Bas vaha 
+Sapno ki duniya 
+Jaha me rah sku 
+Uske sath 
+Par vo mili na 
+To kya karunga 
+Soch itni ki 
+Soch se hi 
+Marunga 
+Uske liye 
+Taiyaar hu me 
+Kho dene ko 
+Sab kuch 
+Bas 
+Mil jaye 
+Mujhe vo
+</p>
 <button onclick="nextPage(5)">Next</button>
 </div>
 
-<!-- Page 6 -->
-<div class="page" id="page6">
-<h2>Chai Aur Main</h2>
-<p>Tu chai... main dhua...</p>
-<button onclick="nextPage(6)">Next</button>
-</div>
-
-<!-- Page 7 -->
-<div class="page" id="page7">
-<h2>The End</h2>
-
-<button onclick="like()">❤️ Like</button>
-<p id="count">0 Likes</p>
-
-</div>
-
-</div>
-
 <script>
-let currentPage = 1;
-
-// Flip function
-function nextPage(pageNumber) {
-  document.getElementById("page" + pageNumber).classList.add("flipped");
-  document.getElementById("flipSound").play();
-  currentPage++;
+function nextPage(page) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById("page" + page).classList.add("active");
 }
-
-// Visitor name save
-function saveName() {
-  let name = document.getElementById("username").value;
-  localStorage.setItem("visitorName", name);
-  document.getElementById("welcome").innerText = "Welcome " + name + " ❤️";
-}
-
-// Load name
-window.onload = function() {
-  let saved = localStorage.getItem("visitorName");
-  if(saved){
-    document.getElementById("welcome").innerText = "Welcome " + saved + " ❤️";
-  }
-
-  let likes = localStorage.getItem("likes") || 0;
-  document.getElementById("count").innerText = likes + " Likes";
-}
-
-// Like system
-function like() {
-  let likes = localStorage.getItem("likes") || 0;
-  likes++;
-  localStorage.setItem("likes", likes);
-  document.getElementById("count").innerText = likes + " Likes";
-}
-
-// Swipe support
-let startX = 0;
-
-document.getElementById("book").addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-document.getElementById("book").addEventListener("touchend", e => {
-  let endX = e.changedTouches[0].clientX;
-  if(startX - endX > 50){
-    nextPage(currentPage);
-  }
-});
 </script>
 
 </body>
