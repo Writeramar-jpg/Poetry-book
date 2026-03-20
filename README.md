@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Amar's Poetry Book</title>
+
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Georgia, serif;
+  overflow: hidden;
+}
+
+.book {
+  width: 320px;
+  height: 450px;
+  position: relative;
+  perspective: 1500px;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+  transform-origin: left;
+  transition: transform 1s;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  backface-visibility: hidden;
+  overflow-y: auto;
+}
+
+.page h2 {
+  text-align: center;
+  color: #ff4d6d;
+}
+
+.page p {
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+button {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 8px 15px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  border-radius: 6px;
+}
+
+.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* Page order */
+.page:nth-child(1){z-index:7;}
+.page:nth-child(2){z-index:6;}
+.page:nth-child(3){z-index:5;}
+.page:nth-child(4){z-index:4;}
+.page:nth-child(5){z-index:3;}
+.page:nth-child(6){z-index:2;}
+.page:nth-child(7){z-index:1;}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Flip Sound -->
+<audio id="flipSound" src="flip.mp3"></audio>
+
+<!-- Visitor Name -->
+<div style="position:absolute;top:10px;text-align:center;width:100%;">
+<input type="text" id="username" placeholder="Enter your name">
+<button onclick="saveName()">Enter</button>
+<h3 id="welcome" style="color:white;"></h3>
+</div>
+
+<div class="book" id="book">
+
+<!-- Page 1 -->
+<div class="page" id="page1">
+<h2>Kuch Der Thahro Zara</h2>
+<p>Kuch der thahro zara... Tumse baat karni hai...</p>
+<button onclick="nextPage(1)">Next</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page2">
+<h2>Mauka Mila To</h2>
+<p>Mauka mila to main wapas aaunga...</p>
+<button onclick="nextPage(2)">Next</button>
+</div>
+
+<!-- Page 3 -->
+<div class="page" id="page3">
+<h2>System</h2>
+<p>Main system nahi... main insaan hu.</p>
+<button onclick="nextPage(3)">Next</button>
+</div>
+
+<!-- Page 4 -->
+<div class="page" id="page4">
+<h2>Soch</h2>
+<p>Ye soch mujhe khatam kar degi...</p>
+<button onclick="nextPage(4)">Next</button>
+</div>
+
+<!-- Page 5 -->
+<div class="page" id="page5">
+<h2>Saath</h2>
+<p>Sabka saath chahiye... par koi nahi.</p>
+<button onclick="nextPage(5)">Next</button>
+</div>
+
+<!-- Page 6 -->
+<div class="page" id="page6">
+<h2>Chai Aur Main</h2>
+<p>Tu chai... main dhua...</p>
+<button onclick="nextPage(6)">Next</button>
+</div>
+
+<!-- Page 7 -->
+<div class="page" id="page7">
+<h2>The End</h2>
+
+<button onclick="like()">❤️ Like</button>
+<p id="count">0 Likes</p>
+
+</div>
+
+</div>
+
+<script>
+let currentPage = 1;
+
+// Flip function
+function nextPage(pageNumber) {
+  document.getElementById("page" + pageNumber).classList.add("flipped");
+  document.getElementById("flipSound").play();
+  currentPage++;
+}
+
+// Visitor name save
+function saveName() {
+  let name = document.getElementById("username").value;
+  localStorage.setItem("visitorName", name);
+  document.getElementById("welcome").innerText = "Welcome " + name + " ❤️";
+}
+
+// Load name
+window.onload = function() {
+  let saved = localStorage.getItem("visitorName");
+  if(saved){
+    document.getElementById("welcome").innerText = "Welcome " + saved + " ❤️";
+  }
+
+  let likes = localStorage.getItem("likes") || 0;
+  document.getElementById("count").innerText = likes + " Likes";
+}
+
+// Like system
+function like() {
+  let likes = localStorage.getItem("likes") || 0;
+  likes++;
+  localStorage.setItem("likes", likes);
+  document.getElementById("count").innerText = likes + " Likes";
+}
+
+// Swipe support
+let startX = 0;
+
+document.getElementById("book").addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.getElementById("book").addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if(startX - endX > 50){
+    nextPage(currentPage);
+  }
+});
+</script>
+
+</body>
+</html>
